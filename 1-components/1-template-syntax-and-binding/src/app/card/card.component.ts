@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IProduct } from '../../mocks/products';
 
 @Component({
   selector: 'app-shop-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {}
+export class CardComponent {
+  @Input() product!: IProduct;
+  @Output() addToCart: EventEmitter<any> = new EventEmitter();
+
+  addProduct() {
+    this.addToCart.emit();
+  }
+}
